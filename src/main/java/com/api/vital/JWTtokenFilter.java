@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -17,11 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.api.vital.models.entity.Usuario;
+import com.api.vital.models.entity.User;
 import com.api.vital.service.jwt.JWTService;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,13 +34,13 @@ public class JWTtokenFilter extends OncePerRequestFilter{
 			throws ServletException, IOException {
 		String token = getToken(request);
 		try {
-		if(token != null && !token.equals("Credenciales inválidas")) {
-			boolean verificado = jwtService.verificarToken(token);
-			if(verificado) {
-				Usuario usuario = jwtService.obtenerUsuario(token);
-				if(usuario != null) {
+		if(token != null && !token.equals("Invalid credentials")) {
+			boolean verified = jwtService.verifyToken(token);
+			if(verified) {
+				User user = jwtService.getUser(token);
+				if(user != null) {
 					List<GrantedAuthority> authorities = new ArrayList<>();
-					UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(usuario.getUsername(), null,
+					UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user.getUsername(), null,
 							authorities);
 					SecurityContextHolder.getContext().setAuthentication(auth);
 				}

@@ -3,11 +3,11 @@ package com.api.vital.models.repository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.api.vital.models.entity.Usuario;
+import com.api.vital.models.entity.User;
 
 @Repository
-public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, String>{
+public interface UserRepository extends PagingAndSortingRepository<User, String>{
 	
-public Usuario findByUsername(String term);
+	public User findByUsername(String term);
 
 }
