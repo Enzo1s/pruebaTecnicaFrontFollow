@@ -1,4 +1,4 @@
-package com.api.vital.service;
+package com.api.vital.serviceImpl;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.api.vital.models.entity.Product;
 import com.api.vital.models.repository.ProductRepository;
+import com.api.vital.service.ProductService;
 
 @Service
 public class ProductServiceImpl extends CommonServiceImpl<Product, ProductRepository> implements ProductService {
@@ -27,7 +28,7 @@ public class ProductServiceImpl extends CommonServiceImpl<Product, ProductReposi
 	}
 
 	@Override
-	public Optional<Product> findAllById(String id) {
+	public Optional<Product> findById(String id) {
 		return repository.findById(id);
 	}
 	

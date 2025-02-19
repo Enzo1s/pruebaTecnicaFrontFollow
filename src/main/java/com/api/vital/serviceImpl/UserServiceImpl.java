@@ -1,4 +1,4 @@
-package com.api.vital.service;
+package com.api.vital.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.api.vital.models.entity.User;
 import com.api.vital.models.repository.UserRepository;
+import com.api.vital.service.UserService;
 
 @Service
 public class UserServiceImpl extends CommonServiceImpl<User, UserRepository> implements UserService {

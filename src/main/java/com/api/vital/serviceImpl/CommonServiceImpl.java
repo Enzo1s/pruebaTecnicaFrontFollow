@@ -1,4 +1,4 @@
-package com.api.vital.service;
+package com.api.vital.serviceImpl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.api.vital.service.CommonService;
 
 public class CommonServiceImpl<E, R extends PagingAndSortingRepository<E, String>> implements CommonService<E> {
 

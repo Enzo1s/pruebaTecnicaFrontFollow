@@ -11,7 +11,7 @@ public interface ProductService extends CommonService<Product> {
 	
 	public List<Product> findByType(String term);
 		
-	public Optional<Product> findAllById(String id);
+	public Optional<Product> findById(String id);
 	
 	public Product update(Product product);
 
